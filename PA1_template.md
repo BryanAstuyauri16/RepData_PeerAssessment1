@@ -69,6 +69,7 @@ ggplot (Total_steps, aes (x = steps)) + geom_histogram(fill = "mediumorchid3") +
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![plot of chunk histogram](1.png)
 
 ```r
 steps_mean <- mean(Total_steps$steps, na.rm = TRUE)
@@ -96,12 +97,14 @@ Mean_steps <- aggregate(steps ~ interval, df, FUN = mean)
 Mean_steps <- df %>% group_by(interval) %>% summarise(steps = mean(steps, na.rm = TRUE))
 Mean_steps$steps[is.na(Mean_steps$steps)] <- 0
 
+
 ggplot (Mean_steps, aes (interval, steps)) + geom_line(colour = "mediumorchid3") +
   labs(title = " Histogram of Steps Taken Each Day ", x = "Interval", y = "Average Steps across all days") +
   theme(plot.title = element_text(hjust = 0.5)) + theme_light()
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![plot of chunk histogram](2.png)
 
 ```r
 max_mean_stps <- Mean_steps[which.max(Mean_steps$steps),]
@@ -141,7 +144,8 @@ ggplot (Total_steps_NA, aes (x = steps)) + geom_histogram(fill = "mediumorchid3"
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![plot of chunk histogram](3.png)
 
 ```r
 steps_mean_NA <- mean(Total_steps_NA$steps, na.rm = TRUE)
@@ -181,4 +185,5 @@ ggplot (df_NA_average, aes (interval, steps)) + geom_line(colour = "navajowhite3
   theme(plot.title = element_text(hjust = 0.5)) + theme_light() + facet_grid(day_type ~ .)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![plot of chunk histogram](4.png)
